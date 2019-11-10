@@ -9,7 +9,7 @@ This script uses PIL to translate text into images.
 ## Usage
 
 
-* See ``texted --help`` for default values
+* See ``texted --help`` for all options with default values
 
 
 * Text can be read from a pipe
@@ -38,7 +38,7 @@ This script uses PIL to translate text into images.
 
 
 * Colors (``-bg``, ``-fg``) may be passed in various forms
-  (all lines define a white background, some with alpha)
+  (all lines define a yellow background, some with alpha)
 
 ```sh
     texted text.txt image.png -bg '#ff0'
