@@ -5,7 +5,6 @@ VER_PY			:=	3.7
 CMD_ISORT		:=	$(DIR_VENV)/bin/isort
 CMD_PIP			:=	$(DIR_VENV)/bin/pip$(VER_PY)
 CMD_PYLINT		:=	$(DIR_VENV)/bin/pylint
-CMD_PYTHON3		:=	$(DIR_VENV)/bin/python$(VER_PY)
 
 DIR_SITE		:=	$(DIR_VENV)/lib/python$(VER_PY)/site-packages
 LIB_CLICK		:=	$(DIR_SITE)/click

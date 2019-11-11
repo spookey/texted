@@ -1,10 +1,8 @@
-import sys
-
 from PIL import Image, ImageColor, ImageDraw, ImageFont
 import click
 
 CLI_PROG = 'texted'
-CLI_VERS = '0.0.0'
+CLI_VERS = '0.0.1'
 
 
 class PILTrueTypeFontParamType(click.ParamType):
@@ -112,9 +110,7 @@ def main(textfile, imagefile, font, **cargs):
     except (ValueError, IOError) as ex:
         raise click.UsageError(ex)
 
-    return 0
-
 
 if __name__ == '__main__':
     # pylint: disable=no-value-for-parameter
-    sys.exit(main())
+    main()
