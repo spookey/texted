@@ -7,8 +7,8 @@ CMD_PIP			:=	$(DIR_VENV)/bin/pip$(VER_PY)
 CMD_PYLINT		:=	$(DIR_VENV)/bin/pylint
 
 DIR_SITE		:=	$(DIR_VENV)/lib/python$(VER_PY)/site-packages
-LIB_CLICK		:=	$(DIR_SITE)/click
-LIB_PILLOW		:=	$(DIR_SITE)/PIL
+LIB_CLICK		:=	$(DIR_SITE)/click/__init__.py
+LIB_PILLOW		:=	$(DIR_SITE)/PIL/__init__.py
 
 
 SCR_TEXTED		:=	texted.py
