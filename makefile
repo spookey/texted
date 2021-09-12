@@ -9,6 +9,7 @@ CMD_PYLINT		:=	$(DIR_VENV)/bin/pylint
 DIR_SITE		:=	$(DIR_VENV)/lib/python$(VER_PY)/site-packages
 LIB_CLICK		:=	$(DIR_SITE)/click/__init__.py
 LIB_PILLOW		:=	$(DIR_SITE)/PIL/__init__.py
+CMD_PUDB		:=	$(DIR_VENV)/bin/pudb
 
 
 SCR_TEXTED		:=	texted.py
@@ -21,12 +22,14 @@ help:
 	@echo
 	@echo "requirements         install requirements"
 	@echo "requirements-dev     install requirements for developing"
+	@echo "requirements-dbg     install requirements for debugging"
 	@echo
 	@echo "sort                 run $(CMD_ISORT) on $(SCR_TEXTED)"
 	@echo "lint                 run $(CMD_PYLINT) on $(SCR_TEXTED)"
 
 $(DIR_VENV):
 	$(CMD_VENV) -p "python$(VER_PY)" "$(DIR_VENV)"
+	$(CMD_PIP) install -U pip
 
 $(LIB_CLICK) $(LIB_PILLOW): $(DIR_VENV)
 	$(CMD_PIP) install -r "requirements.txt"
@@ -34,11 +37,17 @@ $(LIB_CLICK) $(LIB_PILLOW): $(DIR_VENV)
 $(CMD_ISORT) $(CMD_PYLINT): $(DIR_VENV)
 	$(CMD_PIP) install -r "requirements-dev.txt"
 
+$(CMD_PUDB): $(DIR_VENV)
+	$(CMD_PIP) install -r "requirements-dbg.txt"
+
 .PHONY: requirements
 requirements: $(LIB_CLICK) $(LIB_PILLOW)
 
 .PHONY: requirements-dev
 requirements-dev: $(CMD_ISORT) $(CMD_PYLINT)
+
+.PHONY: requirements-dbg
+requirements-dbg: $(CMD_PUDB)
 
 
 define _sort
