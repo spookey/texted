@@ -13,6 +13,7 @@ class PILTrueTypeFontParamType(click.ParamType):
             return ImageFont.truetype(value)
         except IOError:
             self.fail(f'{value} is not a valid font', param, ctx)
+        return None
 
     def __repr__(self):
         return 'PILTrueTypeFont'
@@ -26,6 +27,7 @@ class PILColorParamType(click.ParamType):
             return ImageColor.getrgb(value)
         except ValueError:
             self.fail(f'{value} is not a valid color', param, ctx)
+        return None
 
     def __repr__(self):
         return 'PILColor'
