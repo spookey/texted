@@ -1,6 +1,6 @@
 CMD_VENV		:=	virtualenv
 DIR_VENV		:=	venv
-VER_PY			:=	3.9
+VER_PY			:=	3.10
 
 CMD_ISORT		:=	$(DIR_VENV)/bin/isort
 CMD_PIP			:=	$(DIR_VENV)/bin/pip$(VER_PY)
