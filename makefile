@@ -1,16 +1,16 @@
-CMD_VENV		:=	virtualenv
 DIR_VENV		:=	venv
 VER_PY			:=	3.10
 
-CMD_ISORT		:=	$(DIR_VENV)/bin/isort
-CMD_PIP			:=	$(DIR_VENV)/bin/pip$(VER_PY)
-CMD_PYLINT		:=	$(DIR_VENV)/bin/pylint
-
+DIR_BIN			:=	$(DIR_VENV)/bin
 DIR_SITE		:=	$(DIR_VENV)/lib/python$(VER_PY)/site-packages
+
+CMD_ISORT		:=	$(DIR_BIN)/isort
+CMD_PIP			:=	$(DIR_BIN)/pip$(VER_PY)
+CMD_PUDB		:=	$(DIR_BIN)/pudb
+CMD_PYLINT		:=	$(DIR_BIN)/pylint
+
 LIB_CLICK		:=	$(DIR_SITE)/click/__init__.py
 LIB_PILLOW		:=	$(DIR_SITE)/PIL/__init__.py
-CMD_PUDB		:=	$(DIR_VENV)/bin/pudb
-
 
 SCR_TEXTED		:=	texted.py
 
@@ -28,7 +28,7 @@ help:
 	@echo "lint                 run $(CMD_PYLINT) on $(SCR_TEXTED)"
 
 $(DIR_VENV):
-	$(CMD_VENV) -p "python$(VER_PY)" "$(DIR_VENV)"
+	python$(VER_PY) -m venv "$(DIR_VENV)"
 	$(CMD_PIP) install -U pip
 
 $(LIB_CLICK) $(LIB_PILLOW): $(DIR_VENV)
